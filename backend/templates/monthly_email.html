@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Your {{ month_name }} Performance Report</title>
+    <style>
+        /* CSS resets and basic styles for email clients */
+        body,
+        table,
+        td,
+        a {
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+        }
+
+        table,
+        td {
+            mso-table-lspace: 0pt;
+            mso-table-rspace: 0pt;
+        }
+
+        img {
+            -ms-interpolation-mode: bicubic;
+            border: 0;
+            height: auto;
+            line-height: 100%;
+            outline: none;
+            text-decoration: none;
+        }
+
+        body {
+            height: 100% !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            width: 100% !important;
+            background-color: #f0f2f5;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+    </style>
+</head>
+
+<body
+    style="margin: 0 !important; padding: 0 !important; background-color: #f0f2f5; font-family: 'Poppins', 'Helvetica Neue', Helvetica, Arial, sans-serif;">
+
+    <!-- Main Container Table -->
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td align="center" style="padding: 20px 0;">
+                <!-- Content Wrapper Table -->
+                <table border="0" cellpadding="0" cellspacing="0" width="600"
+                    style="max-width: 600px; background-color: #ffffff; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.1);">
+
+                    <!-- Header Section -->
+                    <tr>
+                        <td align="center"
+                            style="padding: 40px 30px 20px 30px; background: linear-gradient(to right, #0800ff, #ff6ec4); border-top-left-radius: 12px; border-top-right-radius: 12px; color: #ffffff;">
+                            <h1 style="margin: 0; font-size: 28px; font-weight: 700;">Ischool</h1>
+                            <h2 style="margin: 10px 0 0; font-size: 24px; font-weight: 600;">Your Performance Report
+                            </h2>
+                            <p style="margin: 5px 0 0; font-size: 16px; font-weight: 400;">{{ month_name }}</p>
+                        </td>
+                    </tr>
+
+                    <!-- Main Content Section -->
+                    <tr>
+                        <td align="center" style="padding: 30px 25px;">
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                <!-- Personalized Greeting -->
+                                <tr>
+                                    <td style="padding-bottom: 25px;">
+                                        <h3 style="margin: 0; font-size: 20px; font-weight: 600; color: #2c3e50;">Hi {{
+                                            username }},</h3>
+                                        <p style="margin: 5px 0 0; font-size: 16px; color: #555; line-height: 1.6;">
+                                            Here’s a summary of your quiz activity and performance for the last month.
+                                            Keep up the great work!
+                                        </p>
+                                    </td>
+                                </tr>
+
+                                <!-- Stats Overview Cards -->
+                                <tr>
+                                    <td style="padding-bottom: 30px;">
+                                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                            <tr>
+                                                <!-- Card 1: Quizzes Taken -->
+                                                <td align="center" width="48%"
+                                                    style="padding: 20px; background-color: #eaf2ff; border-radius: 8px; text-align: center;">
+                                                    <p
+                                                        style="margin: 0; font-size: 32px; font-weight: 700; color: #3b82f6;">
+                                                        {{ summary_stats.quizzes_taken }}</p>
+                                                    <p style="margin: 5px 0 0; font-size: 14px; color: #3b82f6;">Quizzes
+                                                        Taken</p>
+                                                </td>
+                                                <td width="4%"></td> <!-- Spacer -->
+                                                <!-- Card 2: Average Score -->
+                                                <td align="center" width="48%"
+                                                    style="padding: 20px; background-color: #e7f9f0; border-radius: 8px; text-align: center;">
+                                                    <p
+                                                        style="margin: 0; font-size: 32px; font-weight: 700; color: #2ecc71;">
+                                                        {{ summary_stats.average_score }}%</p>
+                                                    <p style="margin: 5px 0 0; font-size: 14px; color: #2ecc71;">Average
+                                                        Score</p>
+                                                </td>
+                                            </tr>
+                                            <tr style="height: 15px;">
+                                                <td colspan="3"></td>
+                                            </tr>
+                                            <tr>
+                                                <!-- Card 3: Highest Score - UPDATED -->
+                                                <td align="center" width="48%"
+                                                    style="padding: 20px; background-color: #fff8e1; border-radius: 8px; text-align: center;">
+                                                    <p
+                                                        style="margin: 0; font-size: 32px; font-weight: 700; color: #f1c40f;">
+                                                        {{ summary_stats.highest_score.score }}%</p>
+                                                    <p style="margin: 5px 0 0; font-size: 14px; color: #f1c40f;">Highest
+                                                        Score</p>
+                                                    <p
+                                                        style="margin: 5px 0 0; font-size: 12px; color: #777; line-height: 1.2;">
+                                                        on {{ summary_stats.highest_score.quiz_name }}</p>
+                                                </td>
+                                                <td width="4%"></td> <!-- Spacer -->
+                                                <!-- Card 4: Best Subject -->
+                                                <td align="center" width="48%"
+                                                    style="padding: 20px; background-color: #f4e8ff; border-radius: 8px; text-align: center;">
+                                                    <p
+                                                        style="margin: 0; font-size: 24px; font-weight: 700; color: #9b59b6; line-height: 1.3;">
+                                                        {{ summary_stats.best_subject or 'N/A' }}</p>
+                                                    <p style="margin: 5px 0 0; font-size: 14px; color: #9b59b6;">Best
+                                                        Subject</p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+
+                                <!-- Quiz Breakdown Table - UPDATED -->
+                                <tr>
+                                    <td style="padding-bottom: 30px;">
+                                        <h4
+                                            style="margin: 0 0 15px 0; font-size: 18px; color: #2c3e50; border-bottom: 2px solid #e0e0e0; padding-bottom: 10px;">
+                                            Quiz Breakdown</h4>
+                                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                            <thead>
+                                                <tr style="background-color: #f8f9fa;">
+                                                    <th align="left"
+                                                        style="padding: 12px; font-size: 14px; color: #34495e;">Quiz
+                                                        Title</th>
+                                                    <th align="center"
+                                                        style="padding: 12px; font-size: 14px; color: #34495e;">Your
+                                                        Best Score</th>
+                                                    <th align="center"
+                                                        style="padding: 12px; font-size: 14px; color: #34495e;">Best
+                                                        Attempt</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for quiz in quiz_attempts %}
+                                                <tr style="border-bottom: 1px solid #e9ecef;">
+                                                    <td style="padding: 15px 12px; font-size: 15px; color: #333;">
+                                                        <b>{{ quiz.title }}</b><br>
+                                                        <span style="font-size: 13px; color: #7f8c8d;">{{ quiz.subject
+                                                            }}</span>
+                                                    </td>
+                                                    <td align="center"
+                                                        style="padding: 15px 12px; font-size: 15px; font-weight: 600; color: {% if quiz.best_score_percentage >= 80 %}#2ecc71{% elif quiz.best_score_percentage >= 50 %}#f39c12{% else %}#e74c3c{% endif %};">
+                                                        {{ quiz.best_score_percentage }}%
+                                                    </td>
+                                                    <td align="center"
+                                                        style="padding: 15px 12px; font-size: 15px; color: #333;">
+                                                        <b>{{ quiz.best_attempt_number }}</b> / {{ quiz.total_attempts
+                                                        }}
+                                                    </td>
+                                                </tr>
+                                                {% endfor %}
+                                                {% if not quiz_attempts %}
+                                                <tr>
+                                                    <td colspan="3" align="center"
+                                                        style="padding: 30px 12px; font-size: 15px; color: #7f8c8d; font-style: italic;">
+                                                        You didn't take any quizzes this month. Time to get started!
+                                                    </td>
+                                                </tr>
+                                                {% endif %}
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+
+                                <!-- Performance Insights (No changes needed here, but confirmed it works with new data) -->
+                                <tr>
+                                    <td style="padding-bottom: 30px;">
+                                        <h4
+                                            style="margin: 0 0 15px 0; font-size: 18px; color: #2c3e50; border-bottom: 2px solid #e0e0e0; padding-bottom: 10px;">
+                                            Performance Insights</h4>
+                                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                            <tr>
+                                                <td width="48%"
+                                                    style="padding: 20px; background-color: #f0fff4; border-radius: 8px; border: 1px solid #d1f7e0;">
+                                                    <p
+                                                        style="margin: 0 0 10px 0; font-size: 16px; font-weight: 600; color: #27ae60;">
+                                                        🏆 Your Strongest Area</p>
+                                                    <p
+                                                        style="margin: 0; font-size: 18px; font-weight: 500; color: #333;">
+                                                        {{ performance_insights.strongest_subject.name or 'N/A' }}</p>
+                                                    <p style="margin: 5px 0 0; font-size: 14px; color: #555;">Avg.
+                                                        Score: {{ performance_insights.strongest_subject.avg_score }}%
+                                                    </p>
+                                                </td>
+                                                <td width="4%"></td>
+                                                <td width="48%"
+                                                    style="padding: 20px; background-color: #fff5f5; border-radius: 8px; border: 1px solid #ffe0e0;">
+                                                    <p
+                                                        style="margin: 0 0 10px 0; font-size: 16px; font-weight: 600; color: #e67e22;">
+                                                        🧠 Area for Improvement</p>
+                                                    <p
+                                                        style="margin: 0; font-size: 18px; font-weight: 500; color: #333;">
+                                                        {{ performance_insights.improvement_area.name or 'N/A' }}</p>
+                                                    <p style="margin: 5px 0 0; font-size: 14px; color: #555;">Avg.
+                                                        Score: {{ performance_insights.improvement_area.avg_score }}%
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+
+                                <!-- Call to Action Button -->
+                                <tr>
+                                    <td align="center" style="padding-top: 10px;">
+                                        <a href="{{ dashboard_url }}" target="_blank"
+                                            style="display: inline-block; padding: 15px 35px; background: linear-gradient(to right, #0800ff, #ff6ec4); color: #ffffff; text-decoration: none; border-radius: 50px; font-size: 16px; font-weight: 600;">
+                                            View Full Dashboard
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                    <!-- Footer Section -->
+                    <tr>
+                        <td align="center"
+                            style="padding: 25px 30px; background-color: #f8f9fa; border-bottom-left-radius: 12px; border-bottom-right-radius: 12px;">
+                            <p style="margin: 0; font-size: 13px; color: #888;">© 2025 Ischool. All Rights Reserved. |
+                                <a href="#" style="color: #3b82f6; text-decoration: none;">Unsubscribe</a></p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>

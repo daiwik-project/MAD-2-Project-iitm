@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>You've Got a New Quiz – iSchool</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #ffecd2, #fcb69f);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: #ffffffee;
+      padding: 50px 40px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+      width: 90%;
+      text-align: center;
+    }
+
+    h1 {
+      color: #2d3436;
+      margin-bottom: 15px;
+      font-size: 28px;
+    }
+
+    .greeting {
+      font-size: 20px;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    .message {
+      font-size: 18px;
+      color: #666;
+      margin-bottom: 30px;
+    }
+
+    .quiz-path {
+      font-weight: bold;
+      color: #d35400;
+      font-size: 20px;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      background-color: #e67e22;
+      color: white;
+      padding: 14px 28px;
+      font-size: 17px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #cf711f;
+    }
+
+    .footer {
+      margin-top: 40px;
+      font-size: 14px;
+      color: #999;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎉 Hello {{ username }}!</h1>
+    <div class="greeting">You’ve just been invited to take a new quiz on <strong>iSchool</strong>!</div>
+    <div class="message">
+      We believe in your potential, and this is your chance to shine.<br>
+      A new quiz is waiting for you – crafted to help you grow and succeed.
+    </div>
+    <div class="quiz-path">{{ chapter_name }} &gt; {{ quiz_name }}</div>
+    <a href="{{ quiz_url }}" class="btn">✨ Start Quiz Now</a>
+    <div class="footer">
+      Powered by iSchool – Learning Made Delightful 🌟
+    </div>
+  </div>
+</body>
+</html>

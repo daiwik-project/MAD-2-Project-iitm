@@ -1,0 +1,17 @@
+# Flask and Core Extensions
+Flask
+Flask-Cors
+Flask-SQLAlchemy
+Flask-Caching
+
+
+# Authentication & Security
+bcrypt
+PyJWT
+
+# Background Jobs & Task Queue
+celery
+redis
+
+# Configuration
+python-dotenv
